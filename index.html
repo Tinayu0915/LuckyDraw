@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>转盘抽奖</title>
+    <style>
+        *{
+            padding:0;
+            margin:0
+        }
+        html,body{
+            height:100%;
+            font-size: 62.5%;
+            font-family: 'Microsoft Yahei';
+            background:#f8f2ce;
+        }
+        .content{
+            width:640px;
+            height:auto;
+            margin:0 auto 50px auto
+        }
+        .banner{
+            width:640px;
+            height:324px;
+            margin:0 auto;
+            background:url(image/banner.jpg) no-repeat
+        }
+        .Netflow-wrapper{
+            width:480px;
+            height:80px;
+            border-radius:5px;
+            border:3px solid #2be6fc;
+            background: #f4f4f4;
+            margin:0 auto;
+            overflow: hidden
+        }
+        .Netflow-content{
+            width:auto;
+            height:80px;
+            font-weight: 800;
+            margin:0 auto
+        }
+        .text1{
+            width:100%;
+            height:30px;
+            margin:5px auto;
+            font-size: 20px;
+            text-align: center;
+            line-height: 30px;
+            color:#0d8093
+        }
+        .Netflow-content span{
+            color:#f02929
+        }
+        .text2{
+            width:100%;
+            height:42px;
+            margin:0 auto;
+            font-size: 26px;
+            text-align: center;
+            line-height: 42px;
+            color:#0d8093 
+        }
+        .main-body{
+            width:640px;
+            height:414px;
+            margin:0 auto;
+            position:relative
+        }
+        .cloud{
+            width:100%;
+            height:193px;
+            margin:20px auto;
+            background:url(image/cj-bg1.png) no-repeat 
+        }
+        .circle-base{
+            width:100%;
+            height:170px;
+            margin:90px auto 0 auto;
+            background:url(image/cj-bg2.png) no-repeat 
+        }
+        .wrapper{
+            width:414px;
+            height:414px;
+            left:50%;
+            top:430px;
+            margin-left:-210px;
+            position:absolute
+/*            overflow: hidden*/
+        }
+        .circle{
+            width:414px;
+            height:414px;
+            border-radius:300px;
+           
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin-left:-212px;
+            margin-top:-212px;
+/*            transform: rotate(5deg);*/
+            background:url(image/circle.png) no-repeat;
+        }
+        .pointer{
+            width:138px;
+            height:178px;
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin-left:-69px;
+            margin-top:-89px;
+            background:url(image/coin.png) no-repeat
+        }
+        .cover{
+            width: 100%;
+            height:100%;
+            position:fixed;
+            left:0;
+            top:0;
+            background:rgba(0,0,0,0.8);
+            display: none
+        }
+        .pop-up-outline{
+            width:514px;
+            height:430px;
+            border-radius:15px;
+            -webkit-border-radius:20px;
+            -moz-border-radius:20px;
+            -ms-border-radius:20px;
+            -o-border-radius:20px;
+            position:relative;
+            left:50%;
+            top:50%;
+            margin-left:-240px;
+            margin-top:-204px;
+            background:#fff
+        }
+        .pop-up{
+            width:514px;
+            height:302px;
+/*            background:url(image/001.png)*/
+        }
+        .delete{
+            width:20px;
+            height:20px;
+            line-height:20px;
+            text-align: center;
+            color:#000;
+            position:absolute;
+            right:10px;
+            top:10px;
+            font-weight: bolder;
+            font-size: 30px;
+            cursor: pointer
+        }
+        .tips{
+            width:100%;
+            height:50px;
+            text-align: center;
+            line-height: 50px;
+            color:#fe5147;
+            font-weight: 700;
+            font-size:20px
+        }
+        .confirmation{
+            width:240px;
+            height:58px;
+            margin:0 auto;
+            text-align: center;
+            line-height: 58px;
+            border-radius:5px;
+            background:#ff4338;
+            color:#fff;
+            font-size: 28px;
+            cursor: pointer
+        }
+        .footer{
+            width:100%;
+            height:34px;
+            margin:-40px auto;
+            font-size: 22px;
+            font-weight: 800;
+            text-align: center;
+            line-height: 34px;
+            color:#0d8093;
+            background: transparent;
+            overflow: hidden
+        }
+        .record{
+            float:left;
+            cursor: pointer
+        }
+        .rules{
+            float:right;
+            cursor:pointer
+        }
+        .rules-cover{
+            width: 100%;
+            height:100%;
+            position:fixed;
+            left:0;
+            top:0;
+            background:rgba(0,0,0,0.8);
+            display: none
+        }
+        .rules-wrapper{
+            width:480px;
+            height:auto;
+            top:50px;
+            left:50%;
+            margin-left:-240px;
+            position:relative;
+            overflow: hidden;
+        }
+        .rules-cross{
+            width:50px;
+            height:50px;
+            position: absolute;
+            top:10px;
+            right:0;
+            cursor: pointer
+        }
+        .rules-content{
+            width:94%;
+            height:auto;
+            border-radius:5px;
+            margin:90px auto;
+            padding:60px 10px 40px 15px;
+/*
+            top:150px;
+            left:50%;
+            margin-left:-240px;
+*/
+            background:#eeefe4
+        }
+        .rules-content p{
+            width:auto;
+            height:auto;
+            font-size:14px;
+            line-height:18px;
+            text-align: left;
+            font-weight: normal;
+            color:#333
+        }
+        .rules-content .remark{
+            width:auto;
+            height:auto;
+            font-size:14px;
+            line-height:18px;
+            text-align: left;
+            font-weight: normal;
+            color:red
+        }
+        .rules-title{
+            width:410px;
+            height:86px;
+            position:fixed;
+            top:90px;
+            left:50%;
+            margin-left:-205px;
+            background:transparent
+        }
+    </style>
+</head>
+<body>
+  <div class="content">
+    <div class="banner"></div>
+    <div class="Netflow-wrapper">
+        <div class="Netflow-content">
+            <p class="text1">本月主套餐使用流量：<span>1580.00M</span></p>
+            <p class="text2">您有<span></span>次机会</p>
+        </div>
+    </div>
+    <div class="mainbody">
+       <div class="cloud"></div>
+       <div class="circle-base"></div>
+        <div class="wrapper">
+           <div class="circle"></div>
+           <div class="pointer"></div>
+        </div>
+        <div class="cover">
+            <div class="pop-up-outline">
+                <div class="pop-up">
+                <div class="delete">X</div>
+                </div>
+                <div class="tips">奖品将于次月10日前到账，请留意查收！</div>
+                <div class="confirmation">确定</div>
+            </div> 
+        </div> 
+    </div>
+    <div class="footer">
+        <div class="record">中奖纪录>></div>
+        <div class="rules">活动规则>></div>
+        <div class="rules-cover">
+           <div class="rules-wrapper">
+               <div class="rules-cross"><img src="image/hdrk-close.png" width="100%" alt=""></div> 
+                <div class="rules-content">
+                    <p>1、活动时间：2016年10月18日——2016年12月31日。</p>
+                    <p>2、活动期间，主套餐内使用流量每达300M，即可参与抽奖一次（例：600M即2次，900M即3次，以此类推）。</p>
+                    <p>3、活动抽奖只能在当月进行，抽奖机会次数当月月底清零，次月重新计算。</p>
+                    <p>4、抽奖奖池：30元天翼手机话费（赠送话费不可抵扣SP业务、国际漫游、国际长话）、100M省内流量、300M省内流量、500M省内流量。</p>
+                    <p>5、话费和流量奖品次月10日前到账。获赠的流量包到账后，仅限获赠当月使用。流量超出后由号码本身套餐或者标准资费来收取。天翼副号、天翼小号、6分卡（0元保底）、4G 0元日租卡、上网卡、个人定制及时长型套餐等不能加装流量包套餐的用户不能订购，详询10000号。</p>
+                    <p class="remark">备注：非实名制用户不能受理流量包，请进行实名补登记后再购买。</p>
+                </div>
+                
+                <div class="rules-title"><img src="image/hdrk-tilte.png" width="100%" alt=""></div>
+                
+           </div>
+            
+        </div>
+    </div>
+    
+  </div>
+   
+        
+    
+</body>
+</html>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+    $(function(){
+        var ind=0;
+        var i=0;
+        var click_status=false;
+        var click_num;
+        var User=[
+            {angle:720,prize:"300M流量"},
+            {angle:765,prize:"100M流量"},
+            {angle:810,prize:"500M流量"},
+            {angle:855,prize:"30元话费"},
+            {angle:900,prize:"300M流量"},
+            {angle:945,prize:"100M流量"},
+            {angle:990,prize:"500M流量"},
+            {angle:1035,prize:"30元话费"}          
+        ];
+        var record=[];
+        if($.cookie("click_num")==undefined ||$.cookie("click_num")==''){
+            click_num=5;
+            $.cookie("click_num",click_num,{expires:1});
+            $(".text2 span").html(click_num);
+        }else if($.cookie("click_num")==0){
+             click_num=$.cookie("click_num");
+            $(".text2 span").html(click_num);
+            $(".pointer").css({"background":'url(image/pointer2.png)'});
+        }else{
+            click_num=$.cookie("click_num");
+            $(".text2 span").html(click_num);
+        }
+        $("body").on("click",".delete",function(){
+            $(".cover").hide()
+        });
+        $("body").on("click",".confirmation",function(){
+            $(".cover").hide()
+        })
+        $(".pointer").on("click",function(){
+            if(click_status==false){
+               ind=parseInt(Math.random()*8);
+                click_status=true;
+                set=setInterval(function(){
+                    if(i<=User[ind].angle){
+                        i=i+45;
+                        $(".circle").css({"transform":'rotate('+i+'deg)'});
+                    }else{
+                        clearInterval(set);
+                        
+                        click_num--;
+                    $.cookie("click_num",click_num,{expires:1});
+                        $(".text2 span").html(click_num);
+                        if(click_num>0){    
+                        }else{
+                        $(".pointer").css({"background":'url(image/pointer2.png)'})
+                        };                          
+                        i=0;
+                        switch(ind){
+                            case 0:
+                            $(".pop-up").css({"background":'url(image/04.png)'})
+                            $(".cover").show();
+                            record.push(User[ind].prize)
+                            break;
+                            case 1:
+                            $(".pop-up").css({"background":'url(image/02.png)'})
+                            $(".cover").show();
+                            record.push(User[ind].prize)
+                            break;
+                            case 2:
+                            $(".pop-up").css({"background":'url(image/03.png)'})
+                            $(".cover").show();
+                            record.push(User[ind].prize)
+                            break; 
+                            case 3:
+                               $(".pop-up").css({"background":'url(image/01.png)'})
+                            $(".cover").show();
+                            record.push(User[ind].prize)
+                            break;
+                            case 4:
+                            $(".pop-up").css({"background":'url(image/04.png)'})
+                            $(".cover").show();
+                            record.push(User[ind].prize)
+                            break;
+                            case 5:
+                            $(".pop-up").css({"background":'url(image/02.png)'})
+                            $(".cover").show();
+                                record.push(User[ind].prize)
+                            break;
+                            case 6:
+                            $(".pop-up").css({"background":'url(image/03.png)'})
+                            $(".cover").show();
+                            record.push(User[ind].prize)
+                            break;
+                            case 7:
+                            $(".pop-up").css({"background":'url(image/01.png)'})
+                            $(".cover").show();
+                            record.push(User[ind].prize)
+                            break;
+                        };
+                        click_status=false
+                    }
+            },1000/24);
+            console.log(record);
+            if(click_num>0){    
+                        }else{
+                           click_status=true;
+                           clearInterval(set);
+                        }    
+            }
+            
+        })
+        
+        $(".rules").on("click",function(){
+            
+            $(".rules-cover").show();
+        })
+        $(".rules-cross").on("click",function(){
+            $(".rules-cover").hide()
+        })
+        
+        $(".record").on("click",function(){
+            location.href="file:///C:/Users/Administrator/Desktop/thinksite/practice/Project/TurnTable/record.html"
+        })
+        
+        
+        
+        
+        
+        
+    
+    
+    })
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
