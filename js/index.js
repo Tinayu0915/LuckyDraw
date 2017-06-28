@@ -115,8 +115,22 @@ $(function(){
         })
         
         $(".record").on("click",function(){
+<<<<<<< HEAD
             location.href="file:///C:/Users/Administrator/Desktop/thinksite/practice/Project/TurnTable/record.html"
         })
       
     
     })
+=======
+            location.href="#"
+        })
+        
+        
+        
+        
+        
+        
+    
+    
+    })
+>>>>>>> refs/remotes/origin/master

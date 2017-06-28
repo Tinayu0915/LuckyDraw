@@ -32,7 +32,11 @@ html, body { height: 100%; font-size: 62.5%; font-family: 'Microsoft Yahei'; bac
 
 .pop-up-outline { width: 514px; height: 430px; border-radius: 15px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -ms-border-radius: 20px; -o-border-radius: 20px; position: relative; left: 50%; top: 50%; margin-left: -240px; margin-top: -204px; background: #fff; }
 
+<<<<<<< HEAD
 .pop-up { width: 514px; height: 302px; /*            background:url(../image/001.png)*/ }
+=======
+.pop-up { width: 514px; height: 302px; /*            background:url(image/001.png)*/ }
+>>>>>>> refs/remotes/origin/master
 
 .delete { width: 20px; height: 20px; line-height: 20px; text-align: center; color: #000; position: absolute; right: 10px; top: 10px; font-weight: bolder; font-size: 30px; cursor: pointer; }
 
