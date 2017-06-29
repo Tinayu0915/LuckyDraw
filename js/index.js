@@ -115,7 +115,7 @@ $(function(){
         })
         
         $(".record").on("click",function(){
-            location.href="file:///C:/Users/Administrator/Desktop/thinksite/practice/Project/TurnTable/record.html"
+            location.href="#"
         })
       
     
