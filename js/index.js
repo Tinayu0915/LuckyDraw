@@ -120,16 +120,8 @@ $(function(){
       
     
     })
-=======
             location.href="#"
         })
         
-        
-        
-        
-        
-        
-    
-    
     })
->>>>>>> refs/remotes/origin/master
+
