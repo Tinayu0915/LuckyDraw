@@ -117,5 +117,7 @@ $(function(){
         $(".record").on("click",function(){
             location.href="#"
         })
+      	
+    
     })
             
