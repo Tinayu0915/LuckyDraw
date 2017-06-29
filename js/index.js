@@ -115,6 +115,7 @@ $(function(){
         })
         
         $(".record").on("click",function(){
+<<<<<<< HEAD
             location.href="#"
         })
       	
@@ -122,3 +123,15 @@ $(function(){
     })
             
         
+=======
+            location.href="file:///C:/Users/Administrator/Desktop/thinksite/practice/Project/TurnTable/record.html"
+        })
+      
+    
+    })
+            
+        })
+        
+    })
+
+>>>>>>> 8d3424a04863e22c7d899c85807a691246a13817
