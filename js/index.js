@@ -121,20 +121,3 @@ $(function(){
     
     })
             
-        
-=======
-            location.href="file:///C:/Users/Administrator/Desktop/thinksite/practice/Project/TurnTable/record.html"
-=======
-            location.href="#"
->>>>>>> c98725a71a56be04329f35060e40eb7796d403bb
-        })
-    })
-            
-<<<<<<< HEAD
-        })
-        
-    })
-
->>>>>>> 8d3424a04863e22c7d899c85807a691246a13817
-=======
->>>>>>> c98725a71a56be04329f35060e40eb7796d403bb
